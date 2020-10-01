@@ -31,7 +31,7 @@ function BookmarksHeader() {
 				<Title text="Bookmarks" />
 				<NewButton />
 			</TitleBar>
-			<SearchBar />
+			<SearchBar placeholder="Search Bookmarks" />
 		</header>
 	)
 }
