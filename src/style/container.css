@@ -1,0 +1,11 @@
+.container-wrapper {
+	min-height: 35em;
+	margin-top: 4rem !important;
+}
+
+@media screen and (min-width: 900px) {
+	.container-wrapper {
+		width: 80%;
+		margin: auto;
+	}
+}
