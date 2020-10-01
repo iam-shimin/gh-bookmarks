@@ -1,0 +1,42 @@
+@import 'link.css';
+
+.titlebar {
+	display: flex;
+  }
+  
+  .titlebar-title {
+	width: 80%;
+	display: block;
+	margin: auto;
+  }
+  
+  .titlebar {
+	font-size: 1.5rem;
+	font-weight: bold;
+	padding: 1rem 1.6rem;
+  }
+
+.titlebar-backbtn {
+	font-size: 1.5rem;
+	background: transparent;
+	border: none;
+  }
+
+.titlebar {
+	position: relative;
+}
+
+.titlebar::after {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 90%;
+	height: 0.05rem;
+	left: 5%;
+	bottom: 0;
+	background: #918484;
+  }
+
+.titlebar-backbtn {
+	scale: 1.2;
+}
