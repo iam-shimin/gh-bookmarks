@@ -1,0 +1,37 @@
+form {
+	width: 80%;
+	margin: auto;
+	margin-top: 4rem;
+	display: flex;
+	border: solid 1px #888;
+	box-shadow: 0 0 1px 0px #515050;
+	border-radius: 0.3em;
+	padding: 0.3rem 0.2rem;
+	transition: transform 0.1s cubic-bezier(.39,.58,.57,1);
+  }
+
+form:focus-within {
+	box-shadow: 0 0 1.2rem 0px #515050ba;
+	transform: scale(1.05);
+}
+  
+  input {
+	flex: 1;
+	font-size: 1.7rem;
+	border: none;
+  }
+
+input:focus,
+.btn-plain {
+	outline: none;
+}
+
+.btn-plain {
+	  background: transparent;
+	  border: none;
+  }
+
+  .btn-plain:focus {
+	  color: #fff;
+	  background: rgb(14, 1, 1);
+  }
