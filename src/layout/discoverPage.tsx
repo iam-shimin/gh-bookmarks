@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Header from 'components/header';
 import TitleBar, { Title, BackButton } from 'components/titleBar';
 import SearchBar from 'components/searchBar';
 import Container from 'components/container';
@@ -24,7 +23,7 @@ export default function DiscoverPage() {
 
 function DiscoverHeader() {
 	return (
-		<Header>
+		<header>
 			<TitleBar>
 				<BackButton />
 				<Title text="Discover" />
@@ -35,6 +34,6 @@ function DiscoverHeader() {
 					<option value="repo">Repository</option>
 				</select>
 			</SearchBar>
-		</Header>
+		</header>
 	)
 }

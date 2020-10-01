@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Header from 'components/header';
 import TitleBar, {Title, NewButton} from 'components/titleBar';
 import SearchBar from 'components/searchBar';
 import BookmarkCard from 'components/card/bookmarkCard';
@@ -27,12 +26,12 @@ export default function BookmarksPage() {
 
 function BookmarksHeader() {
 	return (
-		<Header>
+		<header>
 			<TitleBar>
 				<Title text="Bookmarks" />
 				<NewButton />
 			</TitleBar>
 			<SearchBar />
-		</Header>
+		</header>
 	)
 }
