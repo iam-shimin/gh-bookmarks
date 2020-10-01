@@ -35,3 +35,8 @@ input:focus,
 	  color: #fff;
 	  background: rgb(14, 1, 1);
   }
+
+  .btn-search:focus,
+  .btn-search:hover {
+	  background: #cdcdcd;
+  }

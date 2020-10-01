@@ -24,7 +24,7 @@ export default function SearchBar(
 
 			{children}
 
-			<button className="btn-plain">
+			<button className="btn-plain btn-search">
 				<span role="img" aria-label="Search">🔍</span>
 			</button>
 		</form>
