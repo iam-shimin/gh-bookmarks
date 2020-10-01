@@ -28,7 +28,7 @@ function DiscoverHeader() {
 				<BackButton />
 				<Title text="Discover" />
 			</TitleBar>
-			<SearchBar>
+			<SearchBar placeholder={`Search GitHub for Repositories`}>
 				<select name="type" title="Search by Type" defaultValue="repo">
 					<option value="user">Username</option>
 					<option value="repo">Repository</option>
