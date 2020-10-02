@@ -24,6 +24,8 @@ form:hover {
 	font-size: 1.7rem;
 	padding: 0.2rem;
 	border: none;
+	overflow: hidden;
+	text-overflow: ellipsis;
   }
 
 input:focus,
