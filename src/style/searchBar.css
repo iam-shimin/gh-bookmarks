@@ -11,13 +11,18 @@ form {
   }
 
 form:focus-within {
-	box-shadow: 0 0 1.2rem 0px #515050ba;
+	box-shadow: 0 0 1.2rem 0px #515050ba !important;
 	transform: scale(1.05);
+}
+
+form:hover {
+	box-shadow: 0 0 0.2rem 0px #515050ba;
 }
   
   input {
 	flex: 1;
 	font-size: 1.7rem;
+	padding: 0.2rem;
 	border: none;
   }
 
