@@ -2,8 +2,12 @@ import React from 'react';
 
 import 'style/searchBar.css';
 
+interface SearchBarProps extends React.HTMLProps<HTMLInputElement> {
+	onSearch?: any
+}
+
 export default function SearchBar(
-	{children, placeholder, ...rest}: React.HTMLProps<HTMLInputElement>
+	{children, placeholder, onSearch, ...rest}: SearchBarProps
 ) {
 
 	const searchField: React.MutableRefObject<HTMLInputElement | null> = React.useRef(null);
@@ -12,14 +16,26 @@ export default function SearchBar(
 		searchField.current?.focus();
 	})
 
+	function handleSearch(event: any) {
+		const {value} = event.target;
+		onSearch('q', value);
+	}
+
+	function handleSubmit(event: any) {
+		event.preventDefault();
+		const form = new FormData(event.target);
+		onSearch('q', form.get('q'));
+	}
+
 	return (
-		<form>
+		<form role="search" onSubmit={handleSubmit}>
 			<input
 				type="search"
 				name="q"
 				ref={searchField}
 				placeholder={placeholder}
 				aria-label={placeholder}
+				onChange={handleSearch}
 				{...rest} />
 
 			{children}
