@@ -1,17 +1,17 @@
 import get from 'utils/httpGet';
 
-function getRepoByName(ownerName: string, repoName: string) {
-	return get(`repos/${ownerName}/${repoName}`);
+function getRepoByName(ownerName: string, repoName: string, page = 1) {
+	return get(`repos/${ownerName}/${repoName}`, {params: {page, per_page: 20}});
 }
 
-function getAllReposByName(repoName: string) {
+function getAllReposByName(repoName: string, page = 1) {
 	return get('search/repositories', {
-		params: {q: repoName}
+		params: {q: repoName, page, per_page: 20}
 	})
 }
 
-function getAllReposByUsername(userName: string) {
-	return get(`users/${userName}/repos`);
+function getAllReposByUsername(userName: string, page = 1) {
+	return get(`users/${userName}/repos`, {params: {page, per_page: 20}});
 }
 
 export default {
