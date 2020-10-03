@@ -52,7 +52,10 @@ export default function DiscoverPage() {
 	const pageToRender = page.current;
 
 	function handleSearch(name: string, value: string) {
-		setSearch(search => ({...search, [name]: value, page: 1}));
+		if (search.type !== name) {
+			setPage(p => ({...p, current: 1}));
+		}
+		setSearch(search => ({...search, [name]: value}));
 	}
 
 	React.useEffect(() => {
