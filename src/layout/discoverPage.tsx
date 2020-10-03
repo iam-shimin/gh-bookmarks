@@ -33,6 +33,7 @@ export default function DiscoverPage() {
 
 	const prevSearch = React.useRef({type: '', q: ''});
 
+	const [page, setPage] = React.useState(1);
 	const [isLoading, setIsLoading] = React.useState(false);
 	const [error, setError] = React.useState<Error | null>(null);
 
@@ -57,31 +58,28 @@ export default function DiscoverPage() {
 				search.q === prevSearch.current.q &&
 				search.type === prevSearch.current.type
 			);
+			// TODO: if errored dupilicate should pass
 
 			if (search.q === '' || duplicateSearch)
 				return;
 
 			setIsLoading(true);
+			setError(null);
 
-			if (search.type === 'user') {
-				userService
-					.getAllUsersByname(search.q)
-					.then(data => setItems({type: search.type, data: data.items}))
-					.catch(error => setError(error))
-					.finally(() => {
-						setIsLoading(false);
-						prevSearch.current = search;
-					});
-			} else {
-				repositoryService
-					.getAllReposByName(search.q)
-					.then(data => setItems({type: search.type, data: data.items}))
-					.catch(error => setError(error))
-					.finally(() => {
-						setIsLoading(false);
-						prevSearch.current = search;
-					});
+			async function fetchData() {
+				if (search.type === 'user') {
+					return userService.getAllUsersByname(search.q);
+				}
+				return repositoryService.getAllReposByName(search.q);
 			}
+
+			fetchData()
+				.then(data => {console.log(data); setItems({type: search.type, data: data.items})})
+				.catch(error => setError(error))
+				.finally(() => {
+					setIsLoading(false);
+					prevSearch.current = search;
+				})
 		}, 900);
 		return () => clearTimeout(timer);
 	}, [search]);
@@ -97,7 +95,7 @@ export default function DiscoverPage() {
 					? <Spinner />
 					: isEmptyList
 						?	<AlertBox>No results found for "{search.q}".</AlertBox>
-						:	items?.data?.map(item => <Card data={item} />)
+						:	items?.data?.map(item => <Card key={item.id} data={item} />)
 				}
 
 			</Container>

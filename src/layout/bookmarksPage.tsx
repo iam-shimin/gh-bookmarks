@@ -19,7 +19,7 @@ export default function BookmarksPage() {
 
 				{added.length === 0
 					? <AlertBox>Bookmarks added from the Discover Page <Link to="/discover">[+ New ]</Link> will be shown here</AlertBox>
-					: added.map(bmkId => <BookmarkCard id={bmkId} />)
+					: added.map(bmkId => <BookmarkCard key={bmkId} id={bmkId} />)
 				}
 				
 			</Container>
