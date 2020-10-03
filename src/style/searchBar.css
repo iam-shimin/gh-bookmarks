@@ -3,20 +3,21 @@ form {
 	margin: auto;
 	margin-top: 4rem;
 	display: flex;
-	border: solid 1px #888;
-	box-shadow: 0 0 1px 0px #515050;
+	/* border: solid 1px goldenrod; */
+	box-shadow: 0 0 1px 0px #515050, 0 0 0 1px goldenrod;
 	border-radius: 0.3em;
 	padding: 0.3rem 0.2rem;
 	transition: transform 0.1s cubic-bezier(.39,.58,.57,1);
   }
 
 form:focus-within {
-	box-shadow: 0 0 1.2rem 0px #515050ba !important;
-	transform: scale(1.05);
+	box-shadow: 0 0 1.2rem 0px #51505057, 0 0 0 2px goldenrod !important;
+	transform: scale(1.01);
+	border-width: 2px;
 }
 
 form:hover {
-	box-shadow: 0 0 0.2rem 0px #515050ba;
+	box-shadow: 0 0 0.2rem 0px #515050ba, 0 0 0 2px goldenrod;
 }
   
   input {
