@@ -1,0 +1,9 @@
+.add-bmk-btn {
+	margin-top: 0.4rem;
+	align-self: flex-start;
+}
+
+.card.bmk-card {
+	margin-top: 1rem;
+	padding: 1rem;
+}
