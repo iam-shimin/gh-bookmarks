@@ -45,6 +45,7 @@ export default function DiscoverPage() {
 	const shouldShowAlert = error || isFirstVisit;
 
 	const alertText = (error?.message && `Error: ${error?.message}`) || 'Start by searching.';
+	const alertType = error?.message ? 'danger': 'primary';
 
 	function handleSearch(name: string, value: string) {
 		setSearch(search => ({...search, [name]: value}));
@@ -90,7 +91,7 @@ export default function DiscoverPage() {
 		<>
 			<DiscoverHeader search={search} onSearch={handleSearch} />
 			<Container>
-				{shouldShowAlert && <AlertBox>{alertText}</AlertBox>}
+				{shouldShowAlert && <AlertBox variant={alertType}>{alertText}</AlertBox>}
 
 				{isLoading
 					? <Spinner />
