@@ -14,7 +14,7 @@ export default function SearchBar(
 
 	React.useEffect(() => {
 		searchField.current?.focus();
-	})
+	}, []);
 
 	function handleSearch(event: any) {
 		const {value} = event.target;
