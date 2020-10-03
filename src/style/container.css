@@ -6,9 +6,9 @@
 }
 
 .spinner-big {
-	position: relative;
+	position: fixed;
 	left: 40%;
-	top: 10%;
+	top: 40%;
 	height: 5rem;
 	width: 5rem;
   }
