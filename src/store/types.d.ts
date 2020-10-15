@@ -11,12 +11,13 @@ interface IRepository {
 	html_url: string,
 	owner: IUser,
 	full_name: string,
+	displayName?: string,
 	description: string
 }
 
 type BookmarkAction = {
 	type: string,
-	payload: IRepository
+	payload: any
 }
 
 type BookmarkState = {
