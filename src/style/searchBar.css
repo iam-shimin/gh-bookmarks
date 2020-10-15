@@ -1,4 +1,4 @@
-form {
+.searchbar {
 	width: 80%;
 	margin: auto;
 	margin-top: 4rem;
@@ -10,17 +10,17 @@ form {
 	transition: transform 0.1s cubic-bezier(.39,.58,.57,1);
   }
 
-form:focus-within {
+.searchbar:focus-within {
 	box-shadow: 0 0 1.2rem 0px #51505057, 0 0 0 2px goldenrod !important;
 	transform: scale(1.01);
 	border-width: 2px;
 }
 
-form:hover {
+.searchbar:hover {
 	box-shadow: 0 0 0.2rem 0px #515050ba, 0 0 0 2px goldenrod;
 }
   
-  input {
+.searchbar input {
 	flex: 1;
 	font-size: 1.7rem;
 	padding: 0.2rem;
@@ -29,7 +29,7 @@ form:hover {
 	text-overflow: ellipsis;
   }
 
-input:focus,
+.searchbar input:focus,
 .btn-plain {
 	outline: none;
 }

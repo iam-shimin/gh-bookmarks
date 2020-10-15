@@ -28,7 +28,7 @@ export default function SearchBar(
 	}
 
 	return (
-		<form role="search" onSubmit={handleSubmit}>
+		<form className="searchbar" role="search" onSubmit={handleSubmit}>
 			<input
 				type="search"
 				name="q"
