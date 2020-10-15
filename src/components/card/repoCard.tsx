@@ -29,6 +29,9 @@ function RepoCard({
 	removeBookmark
 }: RepoCardProps) {
 
+	const [isEditingName, setIsEditingName] = React.useState(false);
+	const renameTextFieldRef: React.MutableRefObject<HTMLInputElement | null> = React.useRef(null);
+
 	const label = isBookmarked
 		? 'Remove Bookmark'
 		: 'Add bookmark';
@@ -39,11 +42,34 @@ function RepoCard({
 		? 'danger'
 		: 'primary';
 	
+	const editButtonLabel = isEditingName
+		? 'Cancel'
+		: 'Rename';
+	
+	function handleEditToggle(event: any) {
+		event.stopPropagation();
+		setIsEditingName(current => !current);
+	}
+
+	React.useEffect(() => {
+		if (isEditingName) {
+			renameTextFieldRef.current?.focus();
+		}
+	}, [isEditingName])
+	
 	return (
 		<Card className="repo-card">
-			<a href={data.html_url} target="_blank" rel="noopener">
-				<span className="title">{data.full_name}</span>
-			</a>
+			{isEditingName
+				? <input defaultValue={data.full_name} ref={renameTextFieldRef} />
+				: (
+					<a href={data.html_url} target="_blank" rel="noopener noreferrer">
+						<span className="title">{data.full_name}</span>
+					</a>
+				  )
+			}
+
+			{isBookmarked && <button onClick={handleEditToggle}>{editButtonLabel}</button>}
+
 			<p>{data.description}</p>
 			<Button variant={variant} className="add-bmk-btn" onClick={onClick}>{label}</Button>
 		</Card>
