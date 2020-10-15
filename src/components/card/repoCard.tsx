@@ -1,14 +1,35 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import { connect } from 'react-redux';
 import Card from './card';
 
-import { addBookmark, bookmarkExist, removeBookmark } from 'utils/storage';
+import { addBookmark, removeBookmark } from 'store/actionCreators';
 
 import 'style/repoCard.css';
 
-export default function RepoCard({data}: {data: any}) {
+type RepoCardOwnProps = {
+	data: IRepository
+}
+
+type RepoCardStateProps = {
+	isBookmarked: boolean
+}
+
+type RepoCardDispatchProps = {
+	addBookmark: Function,
+	removeBookmark: Function
+}
+
+type RepoCardProps = RepoCardOwnProps & RepoCardStateProps & RepoCardDispatchProps;
+
+function RepoCard({
+	data,
+	isBookmarked,
+	addBookmark,
+	removeBookmark
+}: RepoCardProps) {
 	//html_url
-	const isBookmarked = bookmarkExist(data.id);
+
 	const label = isBookmarked
 		? 'Remove Bookmark'
 		: 'Add bookmark';
@@ -27,3 +48,14 @@ export default function RepoCard({data}: {data: any}) {
 		</Card>
 	);
 }
+
+const mapStateToProps = (state: BookmarkState, props: RepoCardOwnProps) => ({
+	isBookmarked: !!state[props.data.id as keyof typeof state]
+});
+
+const mapDispatchToProps = {
+	addBookmark,
+	removeBookmark
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RepoCard)
