@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
 import Card from './card';
 
-import { addBookmark, removeBookmark } from 'store/actionCreators';
+import { addBookmark, removeBookmark, renameBookmark } from 'store/actionCreators';
 
 import 'style/repoCard.css';
 
@@ -17,7 +17,8 @@ type RepoCardStateProps = {
 
 type RepoCardDispatchProps = {
 	addBookmark: typeof addBookmark,
-	removeBookmark: typeof removeBookmark
+	removeBookmark: typeof removeBookmark,
+	renameBookmark: typeof renameBookmark
 }
 
 type RepoCardProps = RepoCardOwnProps & RepoCardStateProps & RepoCardDispatchProps;
@@ -26,11 +27,14 @@ function RepoCard({
 	data,
 	isBookmarked,
 	addBookmark,
-	removeBookmark
+	removeBookmark,
+	renameBookmark
 }: RepoCardProps) {
 
 	const [isEditingName, setIsEditingName] = React.useState(false);
 	const renameTextFieldRef: React.MutableRefObject<HTMLInputElement | null> = React.useRef(null);
+
+	const repoDisplayName = data.displayName || data.full_name;
 
 	const label = isBookmarked
 		? 'Remove Bookmark'
@@ -51,6 +55,11 @@ function RepoCard({
 		setIsEditingName(current => !current);
 	}
 
+	function handleRename() {
+		renameBookmark(data.id, renameTextFieldRef.current?.value || '');
+		setIsEditingName(false);
+	}
+
 	React.useEffect(() => {
 		if (isEditingName) {
 			renameTextFieldRef.current?.focus();
@@ -60,14 +69,15 @@ function RepoCard({
 	return (
 		<Card className="repo-card">
 			{isEditingName
-				? <input defaultValue={data.full_name} ref={renameTextFieldRef} />
+				? <input defaultValue={repoDisplayName} ref={renameTextFieldRef} />
 				: (
 					<a href={data.html_url} target="_blank" rel="noopener noreferrer">
-						<span className="title">{data.full_name}</span>
+						<span className="title">{repoDisplayName}</span>
 					</a>
 				  )
 			}
 
+			{isEditingName && <button onClick={handleRename}>Set</button>}
 			{isBookmarked && <button onClick={handleEditToggle}>{editButtonLabel}</button>}
 
 			<p>{data.description}</p>
@@ -82,7 +92,8 @@ const mapStateToProps = (state: BookmarkState, props: RepoCardOwnProps) => ({
 
 const mapDispatchToProps = {
 	addBookmark,
-	removeBookmark
+	removeBookmark,
+	renameBookmark
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RepoCard)
