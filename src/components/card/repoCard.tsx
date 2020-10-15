@@ -81,14 +81,13 @@ function RepoCard({
 					</form>
 				)
 				: (
-					<>
-						<a href={data.html_url} target="_blank" rel="noopener noreferrer">
+					<a href={data.html_url} target="_blank" rel="noopener noreferrer">
 							<span className="title">{repoDisplayName}</span>
-						</a>
-						{isBookmarkRenamed && <small>{data.full_name}</small>}
-					</>
+					</a>
 				  )
 			}
+			
+			{isBookmarkRenamed && <small>{data.full_name}</small>}
 
 			{(isEditingName || isBookmarked) && (
 				<div>
