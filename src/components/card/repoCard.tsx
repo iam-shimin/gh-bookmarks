@@ -86,13 +86,13 @@ function RepoCard({
 					</a>
 				  )
 			}
-			
+
 			{isBookmarkRenamed && <small>{data.full_name}</small>}
 
 			{(isEditingName || isBookmarked) && (
 				<div>
-					{isEditingName && <button onClick={handleRename}>Set</button>}
-					{isBookmarked && <button onClick={handleEditToggle}>{editButtonLabel}</button>}
+					{isEditingName && <Button variant="dark" className="ml-1" onClick={handleRename}>Set</Button>}
+					{isBookmarked && <Button variant="dark" className="ml-1" onClick={handleEditToggle}>{editButtonLabel}</Button>}
 				</div>
 			)}
 
