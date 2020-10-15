@@ -1,25 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import TitleBar, {Title, NewButton} from 'components/titleBar';
 import SearchBar from 'components/searchBar';
-import BookmarkCard from 'components/card/bookmarkCard';
+import RepoCard from 'components/card/repoCard';
 import Footer from 'components/footer';
 import AlertBox from 'components/alert';
 import Container from 'components/container';
 
-import { getBookmarks } from 'utils/storage';
+type StateProps = {
+	bookmarkCollection: BookmarkState
+}
 
-export default function BookmarksPage() {
-	const added = getBookmarks();
+
+function BookmarksPage({ bookmarkCollection }: StateProps) {
+	const { bmkById } = bookmarkCollection;
 	return (
 		<>
 			<BookmarksHeader />
 			<Container>
 
-				{added.length === 0
-					? <AlertBox>Bookmarks added from the Discover Page <Link to="/discover">[+ New ]</Link> will be shown here</AlertBox>
-					: added.map(bmkId => <BookmarkCard key={bmkId} id={bmkId} />)
+				{
+					bmkById.length === 0
+						? <AlertBox>Bookmarks added from the Discover Page <Link to="/discover">[+ New ]</Link> will be shown here</AlertBox>
+						: bmkById.map(bmkId => <RepoCard key={bmkId} data={bookmarkCollection.repos[bmkId]} />)
 				}
 				
 			</Container>
@@ -39,3 +44,9 @@ function BookmarksHeader() {
 		</header>
 	)
 }
+
+const mapStateToProps = (state: BookmarkState) => ({
+	bookmarkCollection: state
+})
+
+export default connect(mapStateToProps)(BookmarksPage)
