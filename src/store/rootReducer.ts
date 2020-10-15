@@ -12,16 +12,14 @@ export default function rootReducer(state: BookmarkState = initialState, action:
 			return {...state, bmkById, [id]: action.payload};
 
 		case actionTypes.REMOVE:
-			const newData = Object.fromEntries(Object.entries(state).filter(([key]) => {
-				if (key === 'bmkById' && key === action.payload.id) {
-					return false;
-				}
-				return true;
-			}));
+			const filteredBookmarks = Object
+				.entries(state)
+				.filter(([key]) => key !== 'bmkById' && key !== action.payload.id.toString());
+			const newData = Object.fromEntries(filteredBookmarks);
 
 			return {
-				bmkById: state.bmkById.filter(id => id !== action.payload.id),
-				...newData
+				...newData,
+				bmkById: state.bmkById.filter(id => id !== action.payload.id)
 			}
 		default:
 			return state;
