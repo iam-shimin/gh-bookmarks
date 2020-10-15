@@ -81,8 +81,12 @@ function RepoCard({
 				  )
 			}
 
-			{isEditingName && <button onClick={handleRename}>Set</button>}
-			{isBookmarked && <button onClick={handleEditToggle}>{editButtonLabel}</button>}
+			{(isEditingName || isBookmarked) && (
+				<div>
+					{isEditingName && <button onClick={handleRename}>Set</button>}
+					{isBookmarked && <button onClick={handleEditToggle}>{editButtonLabel}</button>}
+				</div>
+			)}
 
 			<p>{data.description}</p>
 			<Button variant={variant} className="add-bmk-btn" onClick={onClick}>{label}</Button>
