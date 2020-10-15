@@ -10,7 +10,8 @@ import Pagination from 'components/pagination';
 import repositoryService from 'services/repos';
 
 export default function UserDiscover() {
-	const {userName} = useParams();
+	// readonly string
+	const {userName}: {userName: Readonly<string>} = useParams();
 	const [show, setShow] = React.useState(!!userName);
 	const [repositories, setRepositories] = React.useState<any>(null);
 	const [page, setPage] = React.useState<Page>({
