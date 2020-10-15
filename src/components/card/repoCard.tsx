@@ -28,7 +28,6 @@ function RepoCard({
 	addBookmark,
 	removeBookmark
 }: RepoCardProps) {
-	//html_url
 
 	const label = isBookmarked
 		? 'Remove Bookmark'
@@ -42,7 +41,9 @@ function RepoCard({
 	
 	return (
 		<Card className="repo-card">
-			<span className="title">{data.full_name}</span>
+			<a href={data.html_url} target="_blank" rel="noopener">
+				<span className="title">{data.full_name}</span>
+			</a>
 			<p>{data.description}</p>
 			<Button variant={variant} className="add-bmk-btn" onClick={onClick}>{label}</Button>
 		</Card>
