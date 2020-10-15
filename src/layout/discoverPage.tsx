@@ -38,7 +38,7 @@ export default function DiscoverPage() {
 	const [isLoading, setIsLoading] = React.useState(false);
 	const [error, setError] = React.useState<Error | null>(null);
 
-	const Card = items.type === 'repo'
+	const Card: any = items.type === 'repo'
 		? RepoCard
 		: UserCard;
 	
