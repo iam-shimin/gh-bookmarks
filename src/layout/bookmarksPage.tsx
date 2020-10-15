@@ -15,10 +15,24 @@ type StateProps = {
 
 
 function BookmarksPage({ bookmarkCollection }: StateProps) {
-	const { bmkById } = bookmarkCollection;
+
+	const [search, setSearch] = React.useState('');
+	const bmkById = search
+		? bookmarkCollection
+			.bmkById
+			.filter(bmkId => (
+				bookmarkCollection.repos[bmkId].name.toLowerCase().includes(search) ||
+				bookmarkCollection.repos[bmkId].full_name.toLowerCase().includes(search)
+			))
+		: bookmarkCollection.bmkById;
+
+	function handleSearch(_: any, search: string) {
+		setSearch(search.toLowerCase());
+	}
+
 	return (
 		<>
-			<BookmarksHeader />
+			<BookmarksHeader onSearch={handleSearch} />
 			<Container>
 
 				{
@@ -33,14 +47,18 @@ function BookmarksPage({ bookmarkCollection }: StateProps) {
 	)
 }
 
-function BookmarksHeader() {
+type BookmarksHeaderProps = {
+	onSearch: Function
+}
+
+function BookmarksHeader({onSearch}: BookmarksHeaderProps) {
 	return (
 		<header>
 			<TitleBar>
 				<Title text="Bookmarks" />
 				<NewButton />
 			</TitleBar>
-			<SearchBar placeholder="Search Bookmarks" />
+			<SearchBar placeholder="Search Bookmarks" onSearch={onSearch} />
 		</header>
 	)
 }
