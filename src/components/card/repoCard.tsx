@@ -61,6 +61,11 @@ function RepoCard({
 		setIsEditingName(false);
 	}
 
+	function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+		event.preventDefault();
+		handleRename();
+	}
+
 	React.useEffect(() => {
 		if (isEditingName) {
 			renameTextFieldRef.current?.focus();
@@ -70,7 +75,11 @@ function RepoCard({
 	return (
 		<Card className="repo-card">
 			{isEditingName
-				? <input defaultValue={repoDisplayName} ref={renameTextFieldRef} />
+				? (
+					<form onSubmit={handleSubmit}>
+						<input defaultValue={repoDisplayName} ref={renameTextFieldRef} />
+					</form>
+				)
 				: (
 					<>
 						<a href={data.html_url} target="_blank" rel="noopener noreferrer">
