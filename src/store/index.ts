@@ -2,12 +2,18 @@ import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootReducer from './rootReducer';
+import storage from 'utils/storage';
 
+const persistedState = storage.load();
 
-const store = createStore(rootReducer, composeWithDevTools());
+const store = createStore(
+	rootReducer,
+	persistedState,
+	composeWithDevTools()
+);
 
 store.subscribe(() => {
-	// presist all bookmarks
+	storage.persist(store.getState())
 })
 
 export default store;
