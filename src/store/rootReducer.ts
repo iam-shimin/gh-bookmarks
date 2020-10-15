@@ -12,6 +12,14 @@ export default function rootReducer(state: BookmarkState = initialState, action:
 			const bmkById = state.bmkById.concat(id);
 			const repos = {...state.repos, [id]: action.payload}
 			return { bmkById, repos };
+		
+		case actionTypes.RENAME:
+			const { id: bmkId, newName } = action.payload;
+			const bookmarksRenamed = {
+				...state.repos,
+				[bmkId]: {...state.repos[bmkId], displayName: newName}
+			};
+			return { ...state, repos: bookmarksRenamed }
 
 		case actionTypes.REMOVE:
 			const filteredBookmarks = Object
