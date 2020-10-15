@@ -35,6 +35,7 @@ function RepoCard({
 	const renameTextFieldRef: React.MutableRefObject<HTMLInputElement | null> = React.useRef(null);
 
 	const repoDisplayName = data.displayName || data.full_name;
+	const isBookmarkRenamed = data.displayName && data.displayName !== data.full_name;
 
 	const label = isBookmarked
 		? 'Remove Bookmark'
@@ -71,9 +72,12 @@ function RepoCard({
 			{isEditingName
 				? <input defaultValue={repoDisplayName} ref={renameTextFieldRef} />
 				: (
-					<a href={data.html_url} target="_blank" rel="noopener noreferrer">
-						<span className="title">{repoDisplayName}</span>
-					</a>
+					<>
+						<a href={data.html_url} target="_blank" rel="noopener noreferrer">
+							<span className="title">{repoDisplayName}</span>
+						</a>
+						{isBookmarkRenamed && <small>{data.full_name}</small>}
+					</>
 				  )
 			}
 
