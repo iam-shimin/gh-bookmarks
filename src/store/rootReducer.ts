@@ -1,7 +1,8 @@
 import actionTypes from "./actionTypes";
 
 const initialState: BookmarkState = {
-	bmkById: []
+	bmkById: [],
+	repos: {}
 };
 
 export default function rootReducer(state: BookmarkState = initialState, action: BookmarkAction) {
@@ -9,17 +10,18 @@ export default function rootReducer(state: BookmarkState = initialState, action:
 		case actionTypes.ADD:
 			const id = action.payload.id;
 			const bmkById = state.bmkById.concat(id);
-			return {...state, bmkById, [id]: action.payload};
+			const repos = {...state.repos, [id]: action.payload}
+			return { bmkById, repos };
 
 		case actionTypes.REMOVE:
 			const filteredBookmarks = Object
-				.entries(state)
+				.entries(state.repos)
 				.filter(([key]) => key !== 'bmkById' && key !== action.payload.id.toString());
-			const newData = Object.fromEntries(filteredBookmarks);
+			const repoBookmarks = Object.fromEntries(filteredBookmarks);
 
 			return {
-				...newData,
-				bmkById: state.bmkById.filter(id => id !== action.payload.id)
+				bmkById: state.bmkById.filter(id => id !== action.payload.id),
+				repos: repoBookmarks
 			}
 		default:
 			return state;

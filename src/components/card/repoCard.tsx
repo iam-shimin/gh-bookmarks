@@ -50,7 +50,7 @@ function RepoCard({
 }
 
 const mapStateToProps = (state: BookmarkState, props: RepoCardOwnProps) => ({
-	isBookmarked: !!state[props.data.id as keyof typeof state]
+	isBookmarked: !!state.repos[props.data.id]
 });
 
 const mapDispatchToProps = {

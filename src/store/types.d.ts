@@ -21,7 +21,9 @@ type BookmarkAction = {
 
 type BookmarkState = {
 	bmkById: string[],
-	[key: string?]: IRepository
+	repos: {
+		[key: string]: IRepository
+	}
 }
 
 
