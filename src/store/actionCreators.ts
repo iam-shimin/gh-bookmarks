@@ -13,3 +13,13 @@ export function removeBookmark(id: string) {
 		payload: {id}
 	}
 }
+
+export function renameBookmark(id: string, newName: string) {
+	return {
+		type: bookmarkTypes.RENAME,
+		payload: {
+			id,
+			newName
+		}
+	}
+}
