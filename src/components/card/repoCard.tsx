@@ -16,8 +16,8 @@ type RepoCardStateProps = {
 }
 
 type RepoCardDispatchProps = {
-	addBookmark: Function,
-	removeBookmark: Function
+	addBookmark: typeof addBookmark,
+	removeBookmark: typeof removeBookmark
 }
 
 type RepoCardProps = RepoCardOwnProps & RepoCardStateProps & RepoCardDispatchProps;
@@ -35,7 +35,7 @@ function RepoCard({
 		: 'Add bookmark';
 	const onClick = isBookmarked
 		? () => removeBookmark(data.id)
-		: () => addBookmark(data.id, data);
+		: () => addBookmark(data);
 	const variant = isBookmarked
 		? 'danger'
 		: 'primary';
