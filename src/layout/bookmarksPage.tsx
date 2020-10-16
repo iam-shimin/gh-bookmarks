@@ -21,6 +21,7 @@ function BookmarksPage({ bookmarkCollection }: StateProps) {
 		? bookmarkCollection
 			.bmkById
 			.filter(bmkId => (
+				bookmarkCollection.repos[bmkId].displayName?.toLowerCase().includes(search) ||
 				bookmarkCollection.repos[bmkId].name.toLowerCase().includes(search) ||
 				bookmarkCollection.repos[bmkId].full_name.toLowerCase().includes(search)
 			))
