@@ -2,8 +2,10 @@ import React from 'react';
 
 import 'style/searchBar.css';
 
+type FormEntryValue = string | null;
+
 interface SearchBarProps extends React.HTMLProps<HTMLInputElement> {
-	onSearch?: any
+	onSearch(name: string, value: FormEntryValue): void
 }
 
 export default function SearchBar(
@@ -16,15 +18,15 @@ export default function SearchBar(
 		searchField.current?.focus();
 	}, []);
 
-	function handleSearch(event: any) {
+	function handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
 		const {value} = event.target;
 		onSearch('q', value);
 	}
 
-	function handleSubmit(event: any) {
+	function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
-		const form = new FormData(event.target);
-		onSearch('q', form.get('q'));
+		const form = new FormData(event.target as HTMLFormElement);
+		onSearch('q', form.get('q') as FormEntryValue);
 	}
 
 	return (
