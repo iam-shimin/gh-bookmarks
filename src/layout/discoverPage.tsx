@@ -15,6 +15,10 @@ import Footer from 'components/footer';
 import repositoryService from 'services/repos';
 import userService from 'services/users';
 
+type SearchObj = {
+	type: string,
+	q: string
+}
 
 export default function DiscoverPage() {
 	const [items, setItems] = React.useState<Items>({
@@ -22,7 +26,7 @@ export default function DiscoverPage() {
 		data: null
 	});
 
-	const [search, setSearch] = React.useState({
+	const [search, setSearch] = React.useState<SearchObj>({
 		type: 'repo',
 		q: ''
 	});
@@ -38,7 +42,7 @@ export default function DiscoverPage() {
 	const [isLoading, setIsLoading] = React.useState(false);
 	const [error, setError] = React.useState<Error | null>(null);
 
-	const Card: any = items.type === 'repo'
+	const Card = items.type === 'repo'
 		? RepoCard
 		: UserCard;
 	
@@ -120,20 +124,20 @@ export default function DiscoverPage() {
 	)
 }
 
-type searchObj = {
-	type: string,
-	q: string
+type DiscoverHeaderProps = {
+	search: SearchObj,
+	onSearch: SearchCallback
 }
 
 function DiscoverHeader(
-	{search, onSearch}: {search: searchObj, onSearch: any}
+	{search, onSearch}: DiscoverHeaderProps
 ) {
 
 	const searchTypeDisplay = search.type === 'repo'
 		? 'Repositories'
 		: 'Usernames';
 
-	function handleSearchChange(event: any) {
+	function handleSearchChange(event: React.ChangeEvent<HTMLSelectElement>) {
 		const {name, value} = event.target;
 		onSearch(name, value);
 	}
