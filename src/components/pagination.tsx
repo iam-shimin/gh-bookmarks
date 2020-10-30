@@ -3,10 +3,16 @@ import BPagination from 'react-bootstrap/Pagination';
 import PageItem from 'react-bootstrap/PageItem';
 import Button from 'react-bootstrap/Button';
 
-export default function Pagination({onNext, onPrev, page}: {onNext: any, onPrev: any, page: any}) {
+type PaginationProps = {
+	onNext(event: React.MouseEvent<HTMLElement>): void,
+	onPrev(event: React.MouseEvent<HTMLElement>): void,
+	page: Page
+}
 
-	const disableNext = page && (page.current === page.last);
-	const disablePrev = page && (page.current === 1);
+export default function Pagination({onNext, onPrev, page}: PaginationProps) {
+
+	const disableNext = page.current === page.last;
+	const disablePrev = page.current === 1;
 	const shouldPaginate = !disableNext || !disablePrev || null;
 
 	return shouldPaginate && (
