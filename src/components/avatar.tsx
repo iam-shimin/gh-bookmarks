@@ -2,7 +2,7 @@ import React from 'react';
 
 import defaultUserIcon from 'assets/images/user-icon.png';
 
-export default function Avatar({src}: any) {
+export default function Avatar({src}: React.HTMLProps<HTMLImageElement>) {
 
 	const [isLoaded, setIsLoaded] = React.useState(false);
 
