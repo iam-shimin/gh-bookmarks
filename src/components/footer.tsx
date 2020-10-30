@@ -7,7 +7,6 @@ export default function Footer() {
 		<footer>
 			<span>Github Bookmarks</span>
 			<div>
-				<a href="#api">API Reference</a>
 				<a href="#repo">Fork this repo</a>
 			</div>
 		</footer>

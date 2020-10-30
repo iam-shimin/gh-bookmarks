@@ -1,11 +1,14 @@
 .container-wrapper {
 	min-height: 35em;
 	margin-top: 4rem !important;
+	width: 80%;
+	margin: auto;
 }
 
-@media screen and (min-width: 900px) {
-	.container-wrapper {
-		width: 80%;
-		margin: auto;
-	}
-}
+.spinner-big {
+	position: absolute;
+	left: 40%;
+	top: 40%;
+	height: 5rem;
+	width: 5rem;
+  }

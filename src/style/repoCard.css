@@ -1,0 +1,12 @@
+.repo-card .title {
+	font-size: 1.1rem;
+	font-weight: bold;
+}
+
+.card.repo-card {
+	padding: 0.6rem 1.4rem;
+}
+
+.card.repo-card {
+	margin-top: 1rem;
+}

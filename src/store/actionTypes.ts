@@ -1,0 +1,5 @@
+export default {
+	ADD: 'BOOKMARK_ADD',
+	REMOVE: 'BOOKMARK_REMOVE',
+	RENAME: 'BOOKMARK_RENAME'
+}

@@ -2,25 +2,26 @@
 
 .titlebar {
 	display: flex;
-  }
-  
-  .titlebar-title {
+}
+
+.titlebar-title {
 	width: 80%;
 	display: block;
 	margin: auto;
-  }
-  
-  .titlebar {
+	color: grey;
+}
+
+.titlebar {
 	font-size: 1.5rem;
 	font-weight: bold;
 	padding: 1rem 1.6rem;
-  }
+}
 
 .titlebar-backbtn {
 	font-size: 1.5rem;
 	background: transparent;
 	border: none;
-  }
+}
 
 .titlebar {
 	position: relative;
@@ -35,8 +36,32 @@
 	left: 5%;
 	bottom: 0;
 	background: #918484;
-  }
+}
 
 .titlebar-backbtn {
 	scale: 1.2;
+}
+
+.titlebar-backbtn:focus,
+.titlebar-backbtn:hover {
+	color: black;
+}
+
+.titlebar-backbtn,
+.addbmk-btn {
+	color: #888;
+}
+
+.addbmk-btn {
+	padding: 0rem 0.3rem;
+	border: solid 2px;
+	border-radius: 0.3rem;
+}
+
+.addbmk-btn:focus {
+	color: orangered;
+}
+
+.addbmk-btn:hover {
+	color: orange;
 }
