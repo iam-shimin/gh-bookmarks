@@ -84,7 +84,7 @@ export default function DiscoverPage() {
 					setItems({type: search.type, data: data.data.items});
 					setPage(p => ({...p, ...data.links}));
 				})
-				.catch(error => setError(error))
+				.catch(error => {console.log(error); setError(error)})
 				.finally(() => {
 					setIsLoading(false);
 					prevSearch.current = search;
