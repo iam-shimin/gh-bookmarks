@@ -6,7 +6,11 @@ import Avatar from 'components/avatar';
 
 import 'style/userCard.css';
 
-export default function UserCard({data: {login, avatar_url, repos_url}}: any) {
+type UserCardProps = {
+	data: IUser
+}
+
+export default function UserCard({data: {login, avatar_url}}: UserCardProps) {
 	
 	// console.log(repos_url, avatar_url);
 	return (
