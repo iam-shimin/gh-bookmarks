@@ -51,7 +51,7 @@ function RepoCard({
 		? 'Cancel'
 		: 'Rename';
 	
-	function handleEditToggle(event: any) {
+	function handleEditToggle(event: React.MouseEvent<HTMLButtonElement>) {
 		event.stopPropagation();
 		setIsEditingName(current => !current);
 	}
