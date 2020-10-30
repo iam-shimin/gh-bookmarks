@@ -3,7 +3,7 @@ import axios, { AxiosRequestConfig } from 'axios';
 const baseUrl = 'https://api.github.com';
 
 function getSearchParamFromLink(url: string, param = 'page') {
-	let tmp: string | null = url.trim();
+	let tmp: string | null = url?.trim();
 	if (tmp) {
 		tmp = (new URLSearchParams(url.substr(1, url.length - 2))).get(param);
 		if (tmp) {
