@@ -13,7 +13,7 @@ export default function UserDiscover() {
 	// readonly string
 	const {userName}: {userName: Readonly<string>} = useParams();
 	const [show, setShow] = React.useState(!!userName);
-	const [repositories, setRepositories] = React.useState<any>(null);
+	const [repositories, setRepositories] = React.useState<IRepository[] | null>(null);
 	const [page, setPage] = React.useState<Page>({
 		current: 1,
 		next: 1,
@@ -65,7 +65,7 @@ export default function UserDiscover() {
 							? <AlertBox>This user has no public Repositories</AlertBox>
 							: (
 								<>
-									{repositories?.map((repo: any) => <RepoCard key={repo.id} data={repo} />)}
+									{repositories?.map((repo: IRepository) => <RepoCard key={repo.id} data={repo} />)}
 									<Pagination
 										page={page}
 										onNext={() => setPage(p => ({...p, current: p.current + 1}))}
