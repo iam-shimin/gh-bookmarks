@@ -77,7 +77,7 @@ function RepoCard({
 			{isEditingName
 				? (
 					<form onSubmit={handleSubmit}>
-						<input defaultValue={repoDisplayName} ref={renameTextFieldRef} />
+						<input style={{width: '100%'}} defaultValue={repoDisplayName} ref={renameTextFieldRef} />
 					</form>
 				)
 				: (
@@ -89,15 +89,13 @@ function RepoCard({
 
 			{isBookmarkRenamed && <small>{data.full_name}</small>}
 
-			{(isEditingName || isBookmarked) && (
-				<div>
-					{isEditingName && <Button variant="dark" className="ml-1" onClick={handleRename}>Set</Button>}
-					{isBookmarked && <Button variant="dark" className="ml-1" onClick={handleEditToggle}>{editButtonLabel}</Button>}
-				</div>
-			)}
-
 			<p>{data.description}</p>
-			<Button variant={variant} className="add-bmk-btn" onClick={onClick}>{label}</Button>
+			<div className="mt-1">
+				{isEditingName && <Button variant="dark" className="ml-1" onClick={handleRename}>Set</Button>}
+				{isBookmarked && <Button variant="dark" className="ml-1" onClick={handleEditToggle}>{editButtonLabel}</Button>}
+				<Button variant={variant} className="ml-1 add-bmk-btn" onClick={onClick}>{label}</Button>
+			</div>
+
 		</Card>
 	);
 }
