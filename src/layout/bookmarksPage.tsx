@@ -49,7 +49,7 @@ function BookmarksPage({ bookmarkCollection }: StateProps) {
 }
 
 type BookmarksHeaderProps = {
-	onSearch: Function
+	onSearch: SearchCallback
 }
 
 function BookmarksHeader({onSearch}: BookmarksHeaderProps) {

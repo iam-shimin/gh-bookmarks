@@ -1,0 +1,1 @@
+type SearchCallback = (name: string, value: FormEntryValue) => void;
