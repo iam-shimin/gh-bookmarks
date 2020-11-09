@@ -13,6 +13,7 @@ import Footer from 'components/footer';
 
 import repositoryService from 'services/repos';
 import userService from 'services/users';
+import usePagination from 'hooks/usePagination';
 
 export default function DiscoverPage() {
 	const [items, setItems] = React.useState<Items>({
@@ -25,11 +26,7 @@ export default function DiscoverPage() {
 		q: ''
 	});
 
-	const [page, setPage] = React.useState<Page>({
-		current: 1,
-		next: 1,
-		last: 1
-	});
+	const { page, setPage, getNextPage, getPrevPage } = usePagination();
 
 	const prevSearch = React.useRef({type: '', q: ''});
 
@@ -103,8 +100,8 @@ export default function DiscoverPage() {
 								{items?.data?.map(item => <Card key={item.id} data={item} />)}
 								<Pagination
 									page={page}
-									onNext={() => setPage(p => ({...p, current: p.current + 1}))}
-									onPrev={() => setPage(p => ({...p, current: p.current - 1}))} />
+									onNext={getNextPage}
+									onPrev={getPrevPage} />
 							</>
 						)
 				}
