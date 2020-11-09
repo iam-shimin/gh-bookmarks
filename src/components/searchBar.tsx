@@ -4,9 +4,7 @@ import 'style/searchBar.css';
 
 type FormEntryValue = string | null;
 
-interface SearchBarProps extends React.HTMLProps<HTMLInputElement> {
-	onSearch: SearchCallback
-}
+type SearchBarProps = Searchable & React.HTMLProps<HTMLInputElement>;
 
 export default function SearchBar(
 	{children, placeholder, onSearch, ...rest}: SearchBarProps

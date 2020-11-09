@@ -3,11 +3,7 @@ import React from 'react';
 import TitleBar, {Title, NewButton} from 'components/titleBar';
 import SearchBar from 'components/searchBar';
 
-type BookmarksHeaderProps = {
-	onSearch: SearchCallback
-}
-
-export default function BookmarksHeader({onSearch}: BookmarksHeaderProps) {
+export default function BookmarksHeader({onSearch}: Searchable) {
 	return (
 		<header>
 			<TitleBar>

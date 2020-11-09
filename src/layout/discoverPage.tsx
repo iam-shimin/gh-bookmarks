@@ -124,9 +124,8 @@ export default function DiscoverPage() {
 	)
 }
 
-type DiscoverHeaderProps = {
-	search: SearchObj,
-	onSearch: SearchCallback
+type DiscoverHeaderProps = Searchable & {
+	search: SearchObj
 }
 
 function DiscoverHeader(
