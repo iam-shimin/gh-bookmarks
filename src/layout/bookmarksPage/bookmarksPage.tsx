@@ -16,7 +16,7 @@ type StateProps = {
 function BookmarksPage({ bookmarkCollection }: StateProps) {
 
 	const [search, setSearch] = React.useState('');
-	const bmkById = search
+	const bmksMatchingSearch = search
 		? bookmarkCollection
 			.bmkById
 			.filter(bmkId => (
@@ -36,9 +36,9 @@ function BookmarksPage({ bookmarkCollection }: StateProps) {
 			<Container>
 
 				{
-					bmkById.length === 0
+					bmksMatchingSearch.length === 0
 						? <AlertBox>Bookmarks added from the Discover Page <Link to="/discover">[+ New ]</Link> will be shown here</AlertBox>
-						: bmkById.map(bmkId => <RepoCard key={bmkId} data={bookmarkCollection.repos[bmkId]} />)
+						: bmksMatchingSearch.map(bmkId => <RepoCard key={bmkId} data={bookmarkCollection.repos[bmkId]} />)
 				}
 				
 			</Container>
