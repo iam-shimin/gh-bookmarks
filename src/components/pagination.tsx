@@ -11,7 +11,7 @@ type PaginationProps = {
 
 export default function Pagination({onNext, onPrev, page}: PaginationProps) {
 
-	const disableNext = page.current === page.last;
+	const disableNext = !page.next && !page.last;
 	const disablePrev = page.current === 1;
 	const shouldPaginate = !disableNext || !disablePrev || null;
 

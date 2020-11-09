@@ -5,7 +5,8 @@ const baseUrl = 'https://api.github.com';
 function getSearchParamFromLink(url: string, param = 'page') {
 	let tmp: string | null = url?.trim();
 	if (tmp) {
-		tmp = (new URLSearchParams(url.substr(1, url.length - 2))).get(param);
+		const params = url.substr(1, url.length - 2).split('?')[1];
+		tmp = (new URLSearchParams(params)).get(param);
 		if (tmp) {
 			return parseInt(tmp);
 		}
