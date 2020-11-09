@@ -12,7 +12,7 @@ type RepoCardOwnProps = {
 }
 
 type RepoCardStateProps = {
-	isBookmarked: boolean
+	persistedData: IRepository
 }
 
 type RepoCardDispatchProps = {
@@ -25,7 +25,7 @@ type RepoCardProps = RepoCardOwnProps & RepoCardStateProps & RepoCardDispatchPro
 
 function RepoCard({
 	data,
-	isBookmarked,
+	persistedData,
 	addBookmark,
 	removeBookmark,
 	renameBookmark
@@ -34,8 +34,10 @@ function RepoCard({
 	const [isEditingName, setIsEditingName] = React.useState(false);
 	const renameTextFieldRef: React.MutableRefObject<HTMLInputElement | null> = React.useRef(null);
 
-	const repoDisplayName = data.displayName || data.full_name;
-	const isBookmarkRenamed = data.displayName && data.displayName !== data.full_name;
+	const isBookmarked = !!persistedData;
+	const repoData = isBookmarked? persistedData: data;
+	const isBookmarkRenamed = repoData.displayName && repoData.displayName !== repoData.full_name;
+	const repoDisplayName = repoData.displayName || repoData.full_name;
 
 	const label = isBookmarked
 		? 'Remove Bookmark'
@@ -101,7 +103,7 @@ function RepoCard({
 }
 
 const mapStateToProps = (state: BookmarkState, props: RepoCardOwnProps) => ({
-	isBookmarked: !!state.repos[props.data.id]
+	persistedData: state.repos[props.data.id]
 });
 
 const mapDispatchToProps = {
