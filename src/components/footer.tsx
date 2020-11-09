@@ -7,7 +7,10 @@ export default function Footer() {
 		<footer>
 			<span>Github Bookmarks</span>
 			<div>
-				<a href="#repo">Fork this repo</a>
+				<a
+					href="https://github.com/iam-shimin/gh-bookmarks" 
+					target="_blank"
+					rel="noopener noreferrer">Fork this repo</a>
 			</div>
 		</footer>
 	)
