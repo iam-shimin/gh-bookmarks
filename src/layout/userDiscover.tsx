@@ -6,25 +6,21 @@ import RepoCard from 'components/card/repoCard';
 import Spinner from 'components/spinner';
 import AlertBox from 'components/alert';
 import Pagination from 'components/pagination';
+import usePagination from 'hooks/usePagination';
 
 import repositoryService from 'services/repos';
 
 export default function UserDiscover() {
-	// readonly string
+	
 	const {userName}: {userName: Readonly<string>} = useParams();
 	const [show, setShow] = React.useState(!!userName);
 	const [repositories, setRepositories] = React.useState<IRepository[] | null>(null);
-	const [page, setPage] = React.useState<Page>({
-		current: 1,
-		next: 1,
-		last: 1
-	});
-	const history = useHistory();
-
+	const { page, setPage, getNextPage, getPrevPage } = usePagination();
 	const [isLoading, setIsLoading] = React.useState(repositories === null);
 	const [error, setError] = React.useState<Error | null>(null);
-	const isEmptyList = !isLoading && repositories?.length === 0;
+	const history = useHistory();
 
+	const isEmptyList = !isLoading && repositories?.length === 0;
 	const pageToRender = page.current;
 
 	function hanldeHide() {
@@ -68,8 +64,8 @@ export default function UserDiscover() {
 									{repositories?.map((repo: IRepository) => <RepoCard key={repo.id} data={repo} />)}
 									<Pagination
 										page={page}
-										onNext={() => setPage(p => ({...p, current: p.current + 1}))}
-										onPrev={() => setPage(p => ({...p, current: p.current - 1}))} />
+										onNext={getNextPage}
+										onPrev={getPrevPage} />
 								</>
 							)
 					}
