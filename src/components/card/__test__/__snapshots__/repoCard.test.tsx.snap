@@ -2,26 +2,36 @@
 
 exports[`<RepoCard /> match snapshot 1`] = `
 <DocumentFragment>
-  <a
-    class="user-card-link"
-    href="/discover/user/login"
+  <div
+    class="card repo-card"
   >
-    <div
-      class="card user-card"
+    <a
+      href="https://github.com/facebook/react"
+      rel="noopener noreferrer"
+      target="_blank"
     >
-      <h1>
-        login
-      </h1>
-      <img
-        alt="Avatar"
-        src="avatar_url"
-        style="display: none;"
-      />
-      <img
-        alt="fallback avatar"
-        src="user-icon.png"
-      />
+      <span
+        class="title"
+      >
+        facebook/react/17-latest
+      </span>
+    </a>
+    <small>
+      facebook/react
+    </small>
+    <p>
+      A declarative, efficient, and flexible JavaScript library for building user interfaces.
+    </p>
+    <div
+      class="mt-1"
+    >
+      <button
+        class="ml-1 add-bmk-btn btn-sep btn btn-primary"
+        type="button"
+      >
+        Add bookmark
+      </button>
     </div>
-  </a>
+  </div>
 </DocumentFragment>
 `;
