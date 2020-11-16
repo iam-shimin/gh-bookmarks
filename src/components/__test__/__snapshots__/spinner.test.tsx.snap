@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Spinner /> 1`] = `
+<DocumentFragment>
+  <div
+    style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+  >
+    <div
+      class="spinner-big spinner-border"
+    />
+  </div>
+</DocumentFragment>
+`;
