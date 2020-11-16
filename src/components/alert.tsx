@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Alert, AlertProps} from 'react-bootstrap';
+import Alert, { AlertProps } from 'react-bootstrap/Alert';
 
 export default function AlertBox({children, variant = 'primary', ...rest}: AlertProps) {
 	return (
