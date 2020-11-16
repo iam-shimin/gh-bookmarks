@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActionCreators add bookmark 1`] = `
+Object {
+  "payload": Object {
+    "description": "description",
+    "displayName": "displayName",
+    "full_name": "full_name",
+    "html_url": "html_url",
+    "id": "id",
+    "name": "name",
+    "owner": Object {
+      "avatar_url": "avatar_url",
+      "html_url": "html_url",
+      "id": "id",
+      "login": "login",
+    },
+  },
+  "type": "BOOKMARK_ADD",
+}
+`;
+
+exports[`ActionCreators remove Bookmark 1`] = `
+Object {
+  "payload": Object {
+    "id": "id",
+  },
+  "type": "BOOKMARK_REMOVE",
+}
+`;
+
+exports[`ActionCreators rename bookmark 1`] = `
+Object {
+  "payload": Object {
+    "id": "id",
+    "newName": "newName",
+  },
+  "type": "BOOKMARK_RENAME",
+}
+`;
