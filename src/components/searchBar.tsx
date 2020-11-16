@@ -2,7 +2,6 @@ import React from 'react';
 
 import 'style/searchBar.css';
 
-type FormEntryValue = string | null;
 
 type SearchBarProps = Searchable & React.HTMLProps<HTMLInputElement>;
 
@@ -23,8 +22,8 @@ export default function SearchBar(
 
 	function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
-		const form = new FormData(event.target as HTMLFormElement);
-		onSearch('q', form.get('q') as FormEntryValue);
+		const form = new FormData(event.currentTarget);
+		onSearch('q', form.get('q'));
 	}
 
 	return (
