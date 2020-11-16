@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RepoCard /> match snapshot 1`] = `
+<DocumentFragment>
+  <a
+    class="user-card-link"
+    href="/discover/user/login"
+  >
+    <div
+      class="card user-card"
+    >
+      <h1>
+        login
+      </h1>
+      <img
+        alt="Avatar"
+        src="avatar_url"
+        style="display: none;"
+      />
+      <img
+        alt="fallback avatar"
+        src="user-icon.png"
+      />
+    </div>
+  </a>
+</DocumentFragment>
+`;
