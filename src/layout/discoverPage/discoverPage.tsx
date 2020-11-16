@@ -82,7 +82,7 @@ export default function DiscoverPage() {
 				})
 		}, timeToWait);
 		return () => clearTimeout(timer);
-	}, [search, pageToRender]);
+	}, [search, pageToRender, setPage]);
 
 
 	return (

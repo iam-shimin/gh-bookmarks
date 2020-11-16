@@ -39,7 +39,7 @@ export default function UserDiscover() {
 			})
 			.catch(error => setError(error))
 			.finally(() => setIsLoading(false))
-	}, [userName, pageToRender]);
+	}, [userName, pageToRender, setPage]);
 	
 	return (
 		
