@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer /> 1`] = `
+<DocumentFragment>
+  <footer>
+    <span>
+      Github Bookmarks
+    </span>
+    <div>
+      <a
+        href="https://github.com/iam-shimin/gh-bookmarks"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        Fork this repo
+      </a>
+    </div>
+  </footer>
+</DocumentFragment>
+`;
