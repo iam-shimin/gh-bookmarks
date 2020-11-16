@@ -1,6 +1,7 @@
 type Links = {
 	next: any,
-	last: any
+	last: any,
+	prev: any
 }
 
 type Page = Links & {

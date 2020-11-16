@@ -2,9 +2,10 @@ import React from 'react';
 
 export default function usePagination() {
 	const [page, setPage] = React.useState<Page>({
-		current: 1,
-		next: 1,
-		last: 1
+		current: null,
+		next: null,
+		last: null,
+		prev: null
 	});
 
 	const getNextPage = React.useCallback(

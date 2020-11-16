@@ -16,7 +16,7 @@ function getSearchParamFromLink(url: string, param = 'page') {
 
 function parseLinkHeader(link = '') {
 	if (link === '')
-		return null;
+		return { first: null, prev: null, next: null, last: null};
 
 	const links = Object.fromEntries(link.split(',').map(i => i.split('; ').reverse()));
 	let next = getSearchParamFromLink(links["rel=\"next\""]);
