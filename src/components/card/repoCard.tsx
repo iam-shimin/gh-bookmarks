@@ -93,9 +93,9 @@ function RepoCard({
 
 			<p>{data.description}</p>
 			<div className="mt-1">
-				{isEditingName && <Button variant="dark" className="ml-1" onClick={handleRename}>Set</Button>}
-				{isBookmarked && <Button variant="dark" className="ml-1" onClick={handleEditToggle}>{editButtonLabel}</Button>}
-				<Button variant={variant} className="ml-1 add-bmk-btn" onClick={onClick}>{label}</Button>
+				{isEditingName && <Button variant="dark" className="ml-1 btn-sep" onClick={handleRename}>Set</Button>}
+				{isBookmarked && <Button variant="dark" className="ml-1 btn-sep" onClick={handleEditToggle}>{editButtonLabel}</Button>}
+				<Button variant={variant} className="ml-1 add-bmk-btn btn-sep" onClick={onClick}>{label}</Button>
 			</div>
 
 		</Card>
