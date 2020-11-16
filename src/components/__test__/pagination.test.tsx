@@ -19,7 +19,7 @@ describe('<Pagination />', () => {
 		expect(prevButton).not.toBeInTheDocument();
 	});
 
-	test('can click next page', async () => {
+	test('can click next page', () => {
 		const prevFn = jest.fn();
 		const nextFn = jest.fn();
 		const { getByRole } = render(<Pagination onNext={nextFn} onPrev={prevFn} page={page} />);
