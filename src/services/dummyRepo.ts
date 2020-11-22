@@ -1,3 +1,10 @@
+export async function dummyResponse(items: any[] = [], links: Links) {
+	return {
+		data: { items},
+		links
+	};
+}
+
 export default {
 	id: 10270250 as unknown as string,
 	node_id: 'MDEwOlJlcG9zaXRvcnkxMDI3MDI1MA==',
