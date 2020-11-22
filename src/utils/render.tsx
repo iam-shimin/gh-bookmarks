@@ -1,5 +1,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouterProps } from 'react-router';
 import { Provider } from 'react-redux';
 import { render } from '@testing-library/react';
 import { Store } from 'redux';
@@ -9,11 +10,11 @@ import store from 'store';
 
 export default function renderWithStoreAndRouter(
 	element: React.ReactElement,
-	injectedStore?: Store<BookmarkState, BookmarkAction>
+	options?: { injectedStore?: Store<BookmarkState, BookmarkAction>, routerProps?: MemoryRouterProps }
 ) {
-	const storeToBeUsed = injectedStore || store;
+	const storeToBeUsed = options?.injectedStore || store;
 	return render(
-		<MemoryRouter>
+		<MemoryRouter {...options?.routerProps}>
 			<Provider store={storeToBeUsed}>{element}</Provider>
 		</MemoryRouter>
 	);
