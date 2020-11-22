@@ -84,7 +84,7 @@ function RepoCard({
 				)
 				: (
 					<a href={data.html_url} target="_blank" rel="noopener noreferrer">
-							<span className="title">{repoDisplayName}</span>
+							<span className="title" role="heading">{repoDisplayName}</span>
 					</a>
 				  )
 			}

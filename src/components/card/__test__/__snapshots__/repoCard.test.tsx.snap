@@ -12,6 +12,7 @@ exports[`<RepoCard /> match snapshot 1`] = `
     >
       <span
         class="title"
+        role="heading"
       >
         facebook/react/17-latest
       </span>
