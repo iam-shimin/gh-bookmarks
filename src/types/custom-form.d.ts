@@ -5,6 +5,6 @@ type Searchable = {
 }
 
 type SearchObj = {
-	type: string,
+	type: 'repo' | 'user',
 	q: string
 }
