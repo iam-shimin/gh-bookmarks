@@ -27,7 +27,7 @@ export default function DiscoverHeader(
 				<Title text="Discover" />
 			</TitleBar>
 			<SearchBar placeholder={`Search GitHub for ${searchTypeDisplay}`} onSearch={onSearch}>
-				<select name="type" title="Search by Type" defaultValue="repo" onChange={handleSearchChange}>
+				<select name="type" title="Search by Type" defaultValue={search.type || "repo"} onChange={handleSearchChange}>
 					<option value="user">Username</option>
 					<option value="repo">Repository</option>
 				</select>
