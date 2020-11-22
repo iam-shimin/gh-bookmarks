@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DiscoverPage /> match snapshot 1`] = `
+<DocumentFragment>
+  <header>
+    <div
+      class="titlebar"
+    >
+      <a
+        class="titlebar-backbtn util--no-underline"
+        href="/"
+        title="Go Back to Bookmarks"
+      >
+        &lt;
+      </a>
+      <span
+        class="titlebar-title"
+      >
+        Discover
+      </span>
+    </div>
+    <form
+      class="searchbar"
+      role="search"
+    >
+      <input
+        aria-label="Search GitHub for Repositories"
+        name="q"
+        placeholder="Search GitHub for Repositories"
+        type="search"
+      />
+      <select
+        name="type"
+        title="Search by Type"
+      >
+        <option
+          value="user"
+        >
+          Username
+        </option>
+        <option
+          selected=""
+          value="repo"
+        >
+          Repository
+        </option>
+      </select>
+      <button
+        class="btn-plain btn-search"
+      >
+        <span
+          aria-label="Search"
+          role="img"
+        >
+          🔍
+        </span>
+      </button>
+    </form>
+  </header>
+  <section
+    class="container-wrapper"
+  >
+    <div
+      class="fade alert alert-primary show"
+      role="alert"
+    >
+      Start by searching.
+    </div>
+  </section>
+  <footer>
+    <span>
+      Github Bookmarks
+    </span>
+    <div>
+      <a
+        href="https://github.com/iam-shimin/gh-bookmarks"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        Fork this repo
+      </a>
+    </div>
+  </footer>
+</DocumentFragment>
+`;
