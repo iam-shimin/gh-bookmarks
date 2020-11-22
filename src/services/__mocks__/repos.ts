@@ -17,7 +17,16 @@ const  getAllReposByName = jest.fn().mockImplementation(
 );
 
 const getAllReposByUsername = jest.fn().mockImplementation(
-	(_userName: string, _page = 1) => dummyResponse(dummyRepoCollection, dummyPaginationLinks)
+	(userName: string, _page = 1) => {
+		const dummyRepoCollection = [
+			{...dummyRepo, id: 'a', name: 'a', full_name: `${userName}/a`},
+			{...dummyRepo, id: 'b', name: 'b', full_name: `${userName}/b`}
+		];
+		return dummyResponse(dummyRepoCollection, dummyPaginationLinks).then(res => ({
+			data: res.data.items,
+			links: res.links
+		}));
+	}
 );
 
 export default {
