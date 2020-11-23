@@ -14,7 +14,7 @@ describe('<BookmarksPage>', () => {
 
 	test('search works', () => {
 		const text = 'renamed';
-		const store = createStore(
+		const injectedStore = createStore(
 			rootReducer,
 			{
 				bmkById: [dummyRepo.id, 'abc'],
@@ -24,7 +24,7 @@ describe('<BookmarksPage>', () => {
 				}
 			}
 		);
-		const { getByRole } = renderWithStoreAndRouter(<BookmarksPage />, store);
+		const { getByRole } = renderWithStoreAndRouter(<BookmarksPage />, { injectedStore });
 		const txtBox = getByRole('searchbox');
 		userEvent.type(txtBox, text);
 		const firstLink = getByRole('link', { name: RegExp(text) });
